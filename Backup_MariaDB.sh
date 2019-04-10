@@ -26,13 +26,14 @@
  LOGS=/var/log/script.log   #envia log para o arquivo script.log
 
 ###################################################################
-
+rm -rf /home/rvs/teste/20*
+rm -rf /home/shell_script/*.gz 
 ##### Rotinas secundarias
 mkdir -p $DIR_BACKUP/$DATA # Cria o diretório de backup diário
-echo "MYSQL"
-echo "Iniciando backup do banco de dados"
+echo "MYSQL">>$LOGS
+echo "Iniciando backup do banco de dados" >>$LOGS
 ##################################################################
-#####Apagando Backup antigo
+#####
 
 # função que executa o backup
 executa_backup(){
@@ -72,7 +73,7 @@ fi
 
 
 DATA=`date +%Y_%m_%d__%H_%M`
-DATA1=`date +%Y_%m_%d`
+DATA1=`date +%Y_%m_%d__%H`
 echo "Final do backup: $DATA" >>$LOGS
 echo "" >>$LOGS
 }
